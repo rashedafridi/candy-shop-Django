@@ -1,0 +1,51 @@
+.item{
+    background-color: #e89f71;
+    border-radius: 0px 20px 0px 20px;
+    padding: 1rem;
+    margin: 1rem;
+    color: aliceblue;
+}
+.card_side_view{
+    background-color: #e89f71;
+    border-radius: 5px 20px 20px 0px;
+}
+.card_side_view .list-group-item{
+    background-color: #e89f71;
+    /* border-radius: 5px 20px 20px 0px; */
+}
+.card_side_view .btn{
+    border-radius: 0px 20px 0px 20px;
+    background: #aa4a30;
+    border: none;
+    color: aliceblue;
+
+}
+.accept_card{
+    background-color: #e89f71;
+    border-radius: 5px 20px 20px 20px;
+}
+.item .btn{
+    border-radius: 0px 20px 0px 20px;
+    background: #aa4a30;
+    border: none;
+    color: aliceblue;
+
+}
+.item img{
+    border-radius: 0px 20px 0px 20px;
+
+}
+@media(max-width: 550px)
+{
+    .item img{
+        border-radius: 0px 20px 0px 20px;
+        max-width: 80px;
+        max-height: 80px;
+        
+    }
+}
+
+.payment-nav.active  {
+    color: #fff !important;
+    background-color: #b64713 !important;
+  }

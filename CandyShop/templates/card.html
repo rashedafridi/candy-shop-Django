@@ -1,0 +1,197 @@
+{% load static %}
+{% include 'includs/head_card.html' %}
+
+<body>
+
+
+  {% include 'includs/nav.html' %}
+ 
+
+  <div class="container mt-5">
+
+
+    <div class="row mt-1 ">
+      <div class="col-lg-9 col-md-12 mb-4">
+
+
+        
+        {% if product is True %}
+        
+          {% for item in card_product_list %}
+            
+            <div class="row item">
+                <div class="col-md-3 col-sm-2 mb-1">
+                  <img class="h-100 w-100" src="{{item.getImgpath}}"  width="" alt="">
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-8">
+                  <div class="row h-100">
+                    <div class=" ">
+                    <h4 class="ml-2">{{item.getProductTitle}}</h4>
+                    </div>
+                  
+                    <div class="col-12 align-self-end">
+                      <div class="row align-items-end">
+                        <div class="col-md-6 mb-1">
+                          <form >
+                          {% csrf_token %}
+                            <input type="hidden" class="route" value="{% url 'addItemInfoToModal' %}">
+                            <input type="hidden" class="productId" name="productId" value="{{item.getId}}">
+                            <button type="button" class=" btn btn-outline-warning quickViewBtn10" data-toggle="modal"
+                            data-target="#quick-view" date-productId={{item.getId}} ><i
+                              class="fas fa-shopping-cart"></i> Quick view</button>
+                          </form>
+                        
+                        </div>
+                      <div class="col-md-6 mb-1">
+                      <form action="{% url 'removeItemFromCard' %}" method='POST'>
+                      {% csrf_token %}
+                      <input type="hidden" class="productId" name="productId" value="{{item.getId}}">
+                        <button type="submit" name="" id="" date-productId={{item.getId}} date-value="{% url 'removeItemFromCard' %}" class="btn btn-block remove-item" ><i class="fas fa-trash-alt"></i>
+                          remoove</button>
+                      </form>
+                      </div>
+                    </div>
+                    </div>
+                    
+                  </div>
+                </div>
+      
+                <div class="col-lg-2 col-md-2 col-sm-8">
+                  <h6>Price {{item.getPrice}} TK</h6>
+                  <ul class="pagination">
+                    <li class="page-item " id="quantity_de">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><span class="page-link" id="quentity_cunt" >1</span></li>
+                    <li class="page-item " id="quantity_in">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+          {% endfor %}
+        {% elif product is False %}
+
+        <h2>NO product on card</h2>
+
+        {% endif %}
+        
+      </div>
+      <!-- side  Card -->
+        <div class="col-lg-3 col-md-12 ">
+        <div class=" card mb-4 card_side_view">
+          <div class="card-body">
+
+            <h5 class="mb-3">The total amount of</h5>
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                Temporary amount
+                <span>100 Tk</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                Shipping
+                <span>Gratis</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                <div>
+                  <strong>The total amount of</strong>
+                  <strong>
+                    <p class="mb-0">(including-VAT)</p>
+                  </strong>
+                </div>
+                <span><strong>1000 Tk</strong></span>
+              </li>
+            </ul>
+            <form>
+            {% csrf_token %}
+            
+            <button type="button" class="btn  btn-block checkoutBtn"  data-route="{% url 'chackForelogin' %}"  >go to checkout</button>
+            </form>
+          </div>
+        </div>
+        <!-- Card -->
+        <!-- Card -->
+        <div class="card mb-3 accept_card">
+          <div class="card-body">
+
+            <h5 class="mb-4">We accept</h5>
+
+            <img class="mr-2" width="45px"
+              src="{% static 'data/visa.svg' %}"
+              alt="Visa">
+            <img class="mr-2" width="45px"
+              src="{% static 'data/amex.svg' %}"
+              alt="American Express">
+            <img class="mr-2" width="45px"
+              src="{% static 'data/mastercard.svg' %}"
+              alt="Mastercard">
+            <img class="mr-2" width="45px"
+              src="{% static 'data/b.svg' %}"
+              alt="PayPal acceptance mark">
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+  {% include 'includs/footer.html' %}
+
+{% include 'includs/modal.html' %}
+
+  <!--  form -->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#chackout-payment">
+  chackout payment
+</button> -->
+
+<!-- _modal-->
+{% include 'includs/payment_modal.html' %}
+
+ 
+
+<!-- <script>
+  $('#exampleModal').on('show.bs.modal', event => {
+    var button = $(event.relatedTarget);
+    var modal = $(this);
+    // Use above variables to manipulate the DOM
+    
+  });
+</script> -->
+  <!-- chackout payment end -->
+
+
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+  
+  
+  <script src="https://kit.fontawesome.com/7483615cee.js" crossorigin="anonymous"></script>
+  <!-- for receiving csrf cookies -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <script src="{% static 'scripts/card.js' %}"></script>
+  <!--<script src="{% static 'scripts/index.js' %}"></script> -->
+</body>
+
+</html>

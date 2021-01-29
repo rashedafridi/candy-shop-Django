@@ -1,0 +1,122 @@
+{% load static %}
+<div class="login_modal modal fade" id="chackout-payment" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Make payment </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <article class="card">
+            <div class="card-body p-1">
+            
+            <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active payment-nav" data-toggle="pill" href="#nav-tab-card">
+                <i class="fa fa-credit-card"></i> Credit Card</a></li>
+              <li class="nav-item">
+                <a class="nav-link payment-nav" data-toggle="pill" href="#nav-tab-Bkash">
+                <i class="fas fa-dove"></i>  Bkash</a></li>
+              <li class="nav-item">
+                <a class="nav-link payment-nav" data-toggle="pill" href="#nav-tab-Rocket">
+                <i class="far fa-paper-plane"></i>Rocket</a></li>
+            </ul>
+            
+            <div class="tab-content">
+            <div class="tab-pane fade show active" id="nav-tab-card">
+              <!-- <p class="alert alert-success">Some text success or error</p> -->
+              <form role="form">
+              <div class="form-group">
+                <label for="username">Full Name (on the card)</label>
+                <input type="text" class="form-control" name="username" placeholder="" required="">
+              </div> <!-- form-group.// -->
+            
+              <div class="form-group">
+                <label for="cardNumber">Card number</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="">
+                  <div class="invalid-feedback">
+                    invalid formate.
+                  </div>
+                  <div class="valid-feedback">
+                    Correct format.
+                  </div>
+                  <div class="input-group-append">
+                    <span class="input-group-text text-warning">
+                      <i class="fab fa-cc-visa"></i>   
+                      <i class="fab fa-cc-mastercard"></i> 
+                    </span>
+                  </div>
+                </div>
+              </div> <!-- form-group.// -->
+            
+              <div class="row">
+                  <div class="col-sm-8">
+                      <div class="form-group">
+                          <label><span class="hidden-xs">Expiration</span> </label>
+                        <div class="input-group">
+                          <input type="number" class="form-control" placeholder="MM" name="month" id="month">
+                            <input type="number" class="form-control" placeholder="YYYY" name="year" id="yearid">
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                          <input type="number" class="form-control" required="">
+                      </div> <!-- form-group.// -->
+                  </div>
+              </div> <!-- row.// -->
+              <button class="subscribe btn btn-warning btn-block" type="button"> Confirm Payment </button>
+              </form>
+            </div> <!-- tab-pane.// -->
+            <div class="tab-pane fade" id="nav-tab-Bkash">
+            <p>Bkash is populear way to pay online</p>
+            <form action="{% url 'makePayment' %}" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <label data-toggle="tooltip" title="" >Enter Bkash mobile number <i class="fa fa-question-circle"></i> </label>
+                <input type="number" class="form-control" id="Bkashnumber" name="Bkashnumber" required="">
+                <div class="invalid-feedback">
+                  invalid number.
+                </div>
+                <div class="valid-feedback">
+                  Correct format.
+                </div>
+                <button type="submit" class=" mt-2 btn btn-warning">Continue</button>
+              </div> <!-- form-group.// -->
+            </form>
+            <p><strong>Note:</strong> Never share your Bkash PIN with other except us 😊😊 </p>
+            </div>
+            <div class="tab-pane fade" id="nav-tab-Rocket">
+              <p>Rocket is populear way to pay online</p>
+              <div class="form-group">
+                <label data-toggle="tooltip" title="" >Enter Rocket mobile number <i class="fa fa-question-circle"></i> </label>
+                <input type="number" class="form-control" id="Rocketmobile" name="Rocketmobile" required="">
+                <div class="invalid-feedback">
+                  invalid number.
+                </div>
+                <div class="valid-feedback">
+                  Correct format.
+                </div>
+                <button type="button" class=" mt-2 btn btn-warning">Continue</button>
+            </div> <!-- form-group.// -->
+  
+              <p><strong>Note:</strong> Necer share your Bkash PIN with other incloding us </p>
+            </div> <!-- tab-pane.// -->
+            </div> <!-- tab-content .// -->
+            
+            </div> <!-- card-body.// -->
+            </article> <!-- card.// -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>

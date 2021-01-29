@@ -1,0 +1,4 @@
+python -m pip install Django
+pip install mysqlclient
+pip install python-dotenv
+pip install Pillow

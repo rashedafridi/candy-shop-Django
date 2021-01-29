@@ -1,0 +1,247 @@
+{% load static %}
+    
+   
+    
+    <div>
+      <h3 class="row_heading">What new</h3>
+      <hr>
+      <div class="row">
+       {% for item in product %}
+      {% if forloop.counter <= 4 and forloop.counter > 0 %}
+        <div class="col-md-3 col-6 my-1" >
+          <!--Card-->
+          <div class="card cards ">
+
+            <div class="cards-backdrop  d-none">
+              <div class="row h-100 ">
+                <div class="col-sm-12 my-auto text-center">
+                  <form >
+                     {% csrf_token %}
+                     <input type="hidden" class="route" value="{% url 'addItemInfoToModal' %}">
+                     <input type="hidden" name="productId" value="{{item.getId}}">
+                    <button type="button" class=" btn btn-outline-warning quickViewBtn" data-toggle="modal"
+                      data-target="#quick-view" date-productId={{item.getId}} >Quick view</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!--Card image-->
+            <img class="card-img-top add-raddius" src=" {{item.getImgpath}} " alt="">
+
+            <!-- <a name="" id="" class="btn btn-primary card-btn" href="#" role="button"> see detaile</a> -->
+
+            <!--/.Card image-->
+
+            <!--Card content-->
+            <div class="card-body ">
+              <!--Category & Title-->
+
+              <h4 class="card-title"><a class="text-warning" href="">{{item.getProductTitle}}</a></h4>
+
+              <!--Card footer-->
+
+
+            </div>
+            <div class="card-footer">
+              <span class="float-left text-warning ">{{item.getPrice}} TK</span>
+              <span class="float-right">
+                <a data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                    class="text-warning fas fa-shopping-cart mr-3"></i></a>
+              </span>
+            </div>
+            <!--/.Card content-->
+
+          </div>
+          <!--/.Card-->
+        </div>        
+      {% endif %}
+       {% endfor %}
+        
+
+      </div>
+    </div>
+
+
+
+    <!-- trending -->
+
+    <div class=" my-3">
+
+      <h3 class="row_heading">Trending</h3>
+      <hr>
+      <div class="row">
+       {% for item in product %}
+      {% if forloop.counter <= 8 and forloop.counter > 4 %}
+        <div class="col-md-3 col-6 my-1" >
+          <!--Card-->
+          <div class="card cards ">
+
+            <div class="cards-backdrop  d-none">
+              <div class="row h-100 ">
+                <div class="col-sm-12 my-auto text-center">
+                  <form >
+                     {% csrf_token %}
+                     <input type="hidden" class="route" value="{% url 'addItemInfoToModal' %}">
+                     <input type="hidden" class="productId" name="productId" value="{{item.getId}}">
+                    <button type="button" class=" btn btn-outline-warning quickViewBtn" data-toggle="modal"
+                      data-target="#quick-view" date-productId={{item.getId}} >Quick view</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!--Card image-->
+            <img class="card-img-top add-raddius" src=" {{item.getImgpath}} " alt="">
+
+            <!-- <a name="" id="" class="btn btn-primary card-btn" href="#" role="button"> see detaile</a> -->
+
+            <!--/.Card image-->
+
+            <!--Card content-->
+            <div class="card-body ">
+              <!--Category & Title-->
+
+              <h4 class="card-title"><a class="text-warning" href="">{{item.getProductTitle}}</a></h4>
+
+              <!--Card footer-->
+
+
+            </div>
+            <div class="card-footer">
+              <span class="float-left text-warning ">{{item.getPrice}} TK</span>
+              <span class="float-right">
+                <a data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                    class="text-warning fas fa-shopping-cart mr-3"></i></a>
+              </span>
+            </div>
+            <!--/.Card content-->
+
+          </div>
+          <!--/.Card-->
+        </div>        
+      {% endif %}
+       {% endfor %}
+      </div>
+    </div>
+
+    <!-- Best seling -->
+    <div>
+      <h3 class="row_heading">Best seling </h3>
+      <hr>
+      <div class="row">
+       {% for item in product %}
+      {% if forloop.counter <= 12 and forloop.counter > 8 %}
+        <div class="col-md-3 col-6 my-1" >
+          <!--Card-->
+          <div class="card cards ">
+
+            <div class="cards-backdrop  d-none">
+              <div class="row h-100 ">
+                <div class="col-sm-12 my-auto text-center">
+                  <form >
+                     {% csrf_token %}
+                     <input type="hidden" class="route" value="{% url 'addItemInfoToModal' %}">
+                     <input type="hidden" class="productId" name="productId" value="{{item.getId}}">
+                     <button type="button" class=" btn btn-outline-warning quickViewBtn" data-toggle="modal"
+                      data-target="#quick-view" date-productId={{item.getId}} >Quick view</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!--Card image-->
+            <img class="card-img-top add-raddius" src=" {{item.getImgpath}} " alt="">
+
+            <!-- <a name="" id="" class="btn btn-primary card-btn" href="#" role="button"> see detaile</a> -->
+
+            <!--/.Card image-->
+
+            <!--Card content-->
+            <div class="card-body ">
+              <!--Category & Title-->
+
+              <h4 class="card-title"><a class="text-warning" href="">{{item.getProductTitle}}</a></h4>
+
+              <!--Card footer-->
+
+
+            </div>
+            <div class="card-footer">
+              <span class="float-left text-warning ">{{item.getPrice}} TK</span>
+              <span class="float-right">
+                <a data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                    class="text-warning fas fa-shopping-cart mr-3"></i></a>
+              </span>
+            </div>
+            <!--/.Card content-->
+
+          </div>
+          <!--/.Card-->
+        </div>        
+      {% endif %}
+       {% endfor %}
+      </div>
+    </div>
+
+
+    <!-- What on sale -->
+
+    <div>
+      <h3 class="row_heading">What on sale</h3>
+      <hr>
+      <div class="row">
+       {% for item in product %}
+      {% if forloop.counter <= 16 and forloop.counter > 9 %}
+        <div class="col-md-3 col-6 my-1" >
+          <!--Card-->
+          <div class="card cards ">
+
+            <div class="cards-backdrop  d-none">
+              <div class="row h-100 ">
+                <div class="col-sm-12 my-auto text-center">
+                  <form >
+                     {% csrf_token %}
+                     <input type="hidden" class="route" value="{% url 'addItemInfoToModal' %}">
+                     <input type="hidden" class="productId" name="productId" value="{{item.getId}}">
+                    <button type="button" class=" btn btn-outline-warning quickViewBtn" data-toggle="modal"
+                      data-target="#quick-view" date-productId={{item.getId}} >Quick view</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!--Card image-->
+            <img class="card-img-top add-raddius" src=" {{item.getImgpath}} " alt="">
+
+            <!-- <a name="" id="" class="btn btn-primary card-btn" href="#" role="button"> see detaile</a> -->
+
+            <!--/.Card image-->
+
+            <!--Card content-->
+            <div class="card-body ">
+              <!--Category & Title-->
+
+              <h4 class="card-title"><a class="text-warning" href="">{{item.getProductTitle}}</a></h4>
+
+              <!--Card footer-->
+
+
+            </div>
+            <div class="card-footer">
+              <span class="float-left text-warning ">{{item.getPrice}} TK</span>
+              <span class="float-right">
+                <a data-toggle="tooltip" data-placement="top" title="Add to Cart"><i
+                    class="text-warning fas fa-shopping-cart mr-3"></i></a>
+              </span>
+            </div>
+            <!--/.Card content-->
+
+          </div>
+          <!--/.Card-->
+        </div>        
+      {% endif %}
+       {% endfor %}
+      </div>
+    </div>
+

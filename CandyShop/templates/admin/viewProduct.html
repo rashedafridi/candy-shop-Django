@@ -1,0 +1,56 @@
+{% load static %}
+<div id="product" class="tab-pane fade ">
+
+        {% if not data %}
+                <tr>
+                    <td colspan="7" class="text-center">No data found !!!</td>
+                </tr>
+        {% else %}
+         <!-- viewProduct -->
+         <table class="table table-striped  ">
+            <thead>
+              <tr>
+                <th>Product ID</th>
+                <th>Product Title</th>
+                <th>Product Image</th>
+                <th>Product Price</th>
+                <th>Product Quantity</th>
+                <th>Product Brand</th>
+                <th>Product Delete</th>
+                <th>Product Edit</th>
+              </tr>
+          </thead>
+        {% for item in data %}
+          
+            <tbody>
+              <tr>
+                <th scope="row">{{item.getId}}</th>
+                <td>{{item.getProductTitle}}</td>
+                <td><img src=" {{item.getImgpath}} " width="60" height="60"></td>
+                <td>{{item.getPrice}} TK</td>
+                <td>{{item.getQuentity}}</td>
+                <td>{{item.getBrand}}</td>
+                <td>
+                  <form class="text-warning" action="{% url 'delete' %}" id='delform' method='POST'>
+                     {% csrf_token %}
+                    <input type='hidden' name='pid' value="{{ item.getId }}">
+                    <button class="bg-warning" type="submit"><i class="fa fa-trash-o"></i></button> 
+                  </form>
+                </td>
+                <td>
+                <form action='{% url 'update' item.getId %}' method='GET'>
+                    
+                    <button class="bg-warning" type="submit"><i class="fa fa-pencil">Edit </i></button> 
+                 </form>
+
+                </td>
+              </tr>
+              
+              
+            </tbody>
+          
+           {% endfor %}
+           </table>
+       {% endif %}
+        
+        </div>

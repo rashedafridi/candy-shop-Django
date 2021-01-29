@@ -1,0 +1,49 @@
+{% load static %}
+ <div id="Order_Detaile" class="tab-pane fade ">
+            
+            <table class="table table-striped  ">
+
+            {% if not order %}
+                <tr>
+                    <td colspan="7" class="text-center">No data found !!!</td>
+                </tr>
+             {% else %}
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Product Title</th>
+                  
+                  <th>Product Price</th>
+                 
+                  <th>Order Date</th>
+                  <th>delivery Date</th>
+                  <th>Shipping Progreass</th>
+                  <th>Order By</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for item in order %}
+              
+                <tr>
+                  <th scope="row">{{item.getId}}</th>
+                  <td>{{item.getProductTitle}}</td>
+                  <td> {{item.getPrice}} </td>
+                  <td>{{item.getorderDate}}</td>
+                  <td>{{item.getdeliveryDate}}</td>
+                  <td>{{item.getsheapingDetail}}</td>
+
+                  <td>
+                    <a href="#" class="text-warning">
+                      {{item.getfastName}} {{item.getlastName}}
+                    </a>
+                  </td>
+                </tr>
+                
+              
+            
+            {% endfor %}
+              </tbody>
+            </table>
+        {% endif %}
+          
+            </div>

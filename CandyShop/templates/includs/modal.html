@@ -1,0 +1,275 @@
+ {% load static %}
+ <!-- quick-view trigger modal -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#quick-view">
+    quick-view
+  </button> -->
+  <!-- quick-view modal -->
+  <div class="login_modal modal fade" id="quick-view" tabindex="-1" role="dialog" aria-labelledby="quick-viewTitle"
+    aria-hidden="true">
+    <div class="modal-dialog Quick-view-modal-dialog  modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">View datile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body m-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class=" col-md-4 col-sm-12">
+                <img class="h-100 w-100 add-raddius " id="quick-view-img" src="{% static 'data/product-assorted-lollypops.jpg' %}" width="" height=""
+                  alt="">
+              </div>
+              <div class=" col-md-8 col-sm-12">
+                <!-- <div class="row h-100"> -->
+                  <h1 id="quick-view-title">assorted-lollypops</h1>
+                  <h3 id="quick-view-price" >price 200TK</h3>
+                  <p id="quick-view-detail" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quae sequi temporibus tenetur
+                    dicta vitae praesentium? Culpa tempora dolore ratione. Asperiores illum a saepe sint officia vel
+                    cumque aliquam necessitatibus.</p>
+                  <div class="row  mt-1">
+                    <div class="col-4 align-self-end">
+                      <div class="product_quantity clearfix">
+                        <span id="" >Quantity: </span>
+                        <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                        <span class="quantity_buttons">
+                          <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
+                          <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <div class="col-8 align-self-end">
+                      <form>
+                      {% csrf_token %}
+                      <input type="hidden" id="quick-view-productId" name="productId" value="">
+                      <input type="hidden" id="quick-view-route" name="quick-view-route" value="{% url 'ADDToCard' %}">
+                      <button type="button" name="quick-view-addCard" id="quick-view-addCard" class="ml-2 btn btn-outline-warning btn-lg btn-block"><i
+                          class="text-warning fas fa-shopping-cart"></i> ADD To Card</button>
+                      </form>
+                    </div>
+                  <!-- </div> -->
+                </div>
+
+              </div>
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-info mx-3 my-sm-0" data-toggle="modal" data-target="#login">
+          login
+        </button> -->
+
+  <!-- Login -->
+  <div class=" modal fade login_modal" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="  modal-content">
+        <div class=" modal-header">
+          <h5 class="modal-title" id="loginLabel">login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="InputEmail1">Email address</label>
+              <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+                placeholder="Enter email" name="loginEmail">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                else.</small>
+              <div class="invalid-feedback">
+                Incorrect Email format.
+              </div>
+              <div class="valid-feedback">
+                Correct format.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="loginPass">Password</label>
+              <input type="password" class="form-control" id="loginPass" placeholder="Password" name="loginPass">
+              <div class="invalid-feedback">
+                Password must contain One Capital Letter One Small Letter One Special Character
+              </div>
+              <div class="valid-feedback">
+                Correct format.
+              </div>
+            </div>
+            <!-- <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  </div> -->
+          
+        </div>
+        <div class=" modal-footer">
+          <button type="submit" class="btn btn-warning">Login</button>
+          <button type="button" class="btn btn-outline-warning mx-0 my-sm-0" data-dismiss="modal" data-toggle="modal"
+            data-target="#Register">
+            Register
+          </button>
+          <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Register toggle modal -->
+  <!-- <button type="button" class="btn btn-info mx-0 my-sm-0" data-toggle="modal" data-target="#Register">
+          Register
+        </button> -->
+
+  <!--Register Modal -->
+  <div class="login_modal modal fade" id="Register" tabindex="-1" role="dialog" aria-labelledby="RegisterLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="RegisterLabel">Registation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}>
+        <div class="modal-body">
+         
+            
+            <div class="form-row">
+              <div class="form-group col-lg-6">
+                <label for="inputFastName">First Name</label>
+                <input type="text" class="form-control" id="inputFastName" name="inputFastName" placeholder="First Name" required>
+                <div class="invalid-feedback">
+                   name cant have any number or special characters.
+                </div>
+                <div class="valid-feedback">
+                  Correct format.
+                </div>
+              </div>
+              <div class="form-group col-lg-6">
+                <label for="inputLastName">Last Name</label>
+                <input type="text" class="form-control" id="inputLastName" name="inputLastName" placeholder="Last Name" required>
+                <div class="invalid-feedback">
+                  name cant have any number or special characters.
+                </div>
+                <div class="valid-feedback">
+                  Correct format.
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-lg-6">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="regEmail" name="regEmail" placeholder="example@gmail.com" required>
+                <div class="invalid-feedback">
+                  Incorrect username format.
+                </div>
+                <div class="valid-feedback">
+                  Correct format.
+                </div>
+
+              </div>
+              <div class="form-group col-lg-6">
+                <label for="inputPhone">Phone</label>
+                <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone number" required>
+                <div class="invalid-feedback">
+                  Incorrect phone number.
+                </div>
+                <div class="valid-feedback">
+                  Correct format.
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-lg-6">
+                <label for="inputCuntry">Cuntry</label>
+                <select id="inputCuntry" name="inputCuntry" class="form-control">
+                  <option selected>Choose</option>
+                  <option>bangladesh</option>
+                </select>
+              </div>
+              <div class="form-group col-lg-3">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity" name="inputCity"  placeholder="City" required>
+                <div class="invalid-feedback">
+                 City name cant have any number or special characters.
+               </div>
+               <div class="valid-feedback">
+                 Correct format.
+               </div>
+              </div>
+              <div class="form-group col-lg-3">
+                <label for="inputZipCode">Zip code</label>
+                <input type="text" class="form-control" id="inputZipCode" name="inputZipCode" placeholder="">
+                <div class="invalid-feedback">
+                  Zip code  can't have  special characters.
+               </div>
+               <div class="valid-feedback">
+                 Correct format.
+               </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-lg-6">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control " id="inputPassword" name="inputPassword" placeholder="">
+                <div class="invalid-feedback">
+                  Password must contain One Capital Letter, One Small Letter, One Special Character.
+                </div>
+                <div class="valid-feedback">
+                  Correct format.
+                </div>
+              </div>
+              <div class="form-group col-lg-6">
+                <label for="inputConfirmPassword">Password</label>
+                <input type="password" class="form-control " id="ReChackinputPassword" name="ReChackinputPassword"
+                  placeholder="" >
+                <div class="invalid-feedback">
+                  password dose not matched.
+                </div>
+                <div class="valid-feedback">
+                  password matched.
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <legend class="col-form-label col-12 pt-0">Gender :</legend>
+              <div class="form-check form-check-inline pl-2">
+                <input class="form-check-input ml-2" type="radio" name="Gender" id="Gender"
+                  value="male">
+                <label class="form-check-label" for="Gender">Male</label>
+                <input class="form-check-input ml-2" type="radio" name="Gender" id="Gender"
+                  value="female">
+                <label class="form-check-label" for="Gender">Female</label>
+                <input class="form-check-input ml-2" type="radio" name="Gender" id="Gender"
+                  value="other">
+                <label class="form-check-label" for="Gender">Other</label>
+               
+              </div>
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+
+          <button type="submit" class="btn btn-warning">registation</button>
+          <button type="button" class="btn btn-outline-warning mx-3 my-sm-0" data-dismiss="modal" data-toggle="modal"
+            data-target="#login">
+            login
+          </button>
+          <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>

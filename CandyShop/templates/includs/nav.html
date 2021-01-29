@@ -1,0 +1,126 @@
+{% load static %}
+  <div class="top_nav">
+    <!-- top navbar -->
+    <nav class="container   navbar navbar-light  my-0 py-0 ">
+      <a class="border-warning rounded-pill  navbar-brand" href="{% url 'index' %}">
+        <img src="{% static 'data/logo.svg' %}" width="" height="35" alt="Shop" sizes="" srcset="">
+      </a>
+
+
+      <form class="form-inline my-2 my-lg-0 ml-auto ">
+
+
+
+        <div class="nav-item dropdown">
+          <a class="d-md-none signIn nav-link dropdown-toggle" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  href="#"> 
+          <span style="font-size: 30px; color: #edcfa9;">
+            <i class="far fa-user"></i>
+          </span>
+          {% if email %}
+          Welco..
+          {% else %}
+          Join
+          {% endif %}
+          
+           </a>
+          <div class="dropdown-menu" aria-labelledby="profileDropdown">
+            {% if email %}
+              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a> 
+            {% else %}
+              <a class="dropdown-item "  data-toggle="modal" data-target="#login" href="#">Login</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#Register" href="#">Register</a>
+            {% endif %}
+          </div>
+        </div>
+
+
+
+        <a href="{% url 'card' %}">
+        <span class="nav-item mx-2 d-md-none">
+          <span class="cart_count float-right ">{{card_product_list_count}}</span>
+          <span style="font-size: 30px; color:  #edcfa9;">
+            <i class="fas fa-cart-arrow-down"></i>
+          </span>
+        </span>
+        </a>
+      </form>
+      <button class="navbar-toggler  d-md-none " type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <form class="form-inline my-2 my-lg-0  mr-2"></form>
+      <div class=" row mx-md-2">
+        <div class="  mt-1 pr-0">
+          <input class=" form-control rounded-pill" type="search" placeholder="Search" aria-label="Search">
+        </div>
+
+        <div class="col-2 ml-0 pl-0">
+          <button class=" btn  my-sm-0" type=""><i style="font-size: 30px; color: #edcfa9;"
+              class=" fas fa-search"></i></button>
+        </div>
+
+      </div>
+
+        <div class="nav-item dropdown">
+          <a class="d-none d-md-block signIn nav-link dropdown-toggle" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  href="#"> 
+          <span style="font-size: 30px; color: #edcfa9;">
+            <i class="far fa-user"></i>
+          </span>
+          {% if email %}
+          Welcome {{fastName}} {{lastName}}
+          {% else %}
+          Sign In/Join
+          {% endif %}
+          
+           </a>
+          <div class="dropdown-menu" aria-labelledby="profileDropdown">
+            {% if email %}
+              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a> 
+            {% else %}
+              <a class="dropdown-item "  data-toggle="modal" data-target="#login" href="#">Login</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#Register" href="#">Register</a>
+            {% endif %}
+          </div>
+        </div>
+        <a href="{% url 'card' %}">
+          <span class="nav-item mx-2 d-none d-md-block">
+            <span class="cart_count float-right ">{{card_product_list_count}}</span>
+            <span style="font-size: 30px; color: #edcfa9;">
+              <i class="fas fa-cart-arrow-down"></i>
+            </span>
+          </span>
+        </a>
+      </form>
+      <button class="navbar-toggler d-none d-md-block d-lg-none" type="button" data-toggle="collapse"
+        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div>
+  <div class="buttom_nav">
+    <nav class=" container  navbar navbar-expand-lg navbar-light ">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+
+      <div class="collapse navbar-collapse " id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto nav-item-font">
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Shop <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Gift</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Special Deals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Holidays</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Brands</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
